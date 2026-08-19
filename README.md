@@ -1,129 +1,173 @@
-# PeopleHub — HR Portal
+# PeopleHub – HR Portal with AI Assistant
 
-A complete React 18 + Vite + TypeScript HR portal with four HR workflows and a floating Azure OpenAI assistant. The frontend uses plain CSS modules and local JSON mock data. The backend can run locally with Express or serverlessly as a Netlify Function.
+PeopleHub is a modern HR self-service portal featuring an AI-powered HR assistant. Employees can view important HR information, manage leave requests, search the employee directory, read company policies, and ask HR-related questions.
 
-## File tree
+## Live Website
 
-```text
-.
-├── .env.example
-├── .gitignore
-├── README.md
-├── netlify.toml
-├── package.json
-├── backend
-│   ├── package.json
-│   ├── tsconfig.json
-│   └── src
-│       ├── chat.ts
-│       └── server.ts
-├── frontend
-│   ├── index.html
-│   ├── package.json
-│   ├── tsconfig.app.json
-│   ├── tsconfig.json
-│   ├── tsconfig.node.json
-│   ├── vite.config.ts
-│   └── src
-│       ├── App.tsx
-│       ├── main.tsx
-│       ├── components
-│       │   ├── ChatWidget.module.css
-│       │   ├── ChatWidget.tsx
-│       │   ├── Layout.module.css
-│       │   └── Layout.tsx
-│       ├── data
-│       │   ├── announcements.json
-│       │   ├── employees.json
-│       │   ├── leaveRequests.json
-│       │   └── policies.json
-│       ├── pages
-│       │   ├── Dashboard.tsx
-│       │   ├── Employees.tsx
-│       │   ├── Leave.tsx
-│       │   ├── Pages.module.css
-│       │   └── Policies.tsx
-│       └── styles
-│           └── global.css
-└── netlify
-    └── functions
-        └── chat.ts
-```
+https://hragent123.netlify.app/
 
-## Local run
+## Features
 
-Prerequisites: Node.js 18 or newer and npm.
+* HR dashboard with leave balance, pending requests, next payday, and announcements
+* Leave request submission and tracking
+* Searchable employee directory
+* Expandable HR policies section
+* AI-powered “Ask HR” chat assistant
+* Responsive design for desktop and mobile devices
+* Secure server-side Azure OpenAI integration
 
-1. Copy `.env.example` to `.env` at the project root.
-2. Set the three Azure values in `.env`:
+## Technologies Used
+
+* React 18
+* Vite
+* TypeScript
+* React Router
+* CSS Modules
+* Node.js
+* Express
+* Azure OpenAI
+* Netlify Functions
+* Netlify
+* GitHub
+
+## How the HR Assistant Works
+
+The employee enters a question in the “Ask HR” chat window.
+
+The frontend sends the question to the `/api/chat` endpoint. During local development, this endpoint is handled by the Express backend. On the deployed website, it is handled by a Netlify Function.
+
+The backend securely connects to Azure OpenAI and returns the generated answer to the chat window.
+
+The Azure API key is stored only in the backend environment variables and is never exposed in the browser.
+
+## HR Portal Sections
+
+### Dashboard
+
+Displays important HR information, including:
+
+* Leave balance
+* Pending requests
+* Next payday
+* Recent company announcements
+
+### Leave
+
+Allows employees to:
+
+* View previous leave requests
+* Check leave request status
+* Submit a new leave request
+
+### Employees
+
+Provides a searchable employee directory containing:
+
+* Employee name
+* Job role
+* Department
+* Email address
+
+### Policies
+
+Displays company HR policies in an expandable accordion format.
+
+### Ask HR Assistant
+
+The AI assistant answers common questions related to:
+
+* Leave
+* Payroll
+* Employee benefits
+* Workplace policies
+* General HR procedures
+
+## Environment Variables
+
+The following environment variables are required:
 
 ```env
 AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
 AZURE_OPENAI_API_KEY=your-api-key
-AZURE_OPENAI_DEPLOYMENT=gpt-4o
+AZURE_OPENAI_DEPLOYMENT=your-deployment-name
 ```
 
-3. Install dependencies:
+Never upload the real `.env` file or API key to GitHub.
+
+## Running the Project Locally
+
+### Start the backend
 
 ```bash
+cd backend
 npm install
-npm run install:all
+npm start
 ```
 
-4. Start the Express API and Vite app together:
+### Start the frontend
+
+Open another terminal and run:
 
 ```bash
+cd frontend
+npm install
 npm run dev
 ```
 
-Open `http://localhost:5173`. Vite proxies `/api` requests to Express at `http://localhost:3001`. If the Azure variables are missing, the chat returns a canned demo response.
+Open the local URL displayed by Vite, usually:
 
-For a production frontend build:
-
-```bash
-npm run build
+```text
+http://localhost:5173
 ```
 
-To start only the backend:
+## Netlify Deployment
 
-```bash
-npm run start
+The project is deployed using Netlify.
+
+The Azure OpenAI credentials must be added under:
+
+```text
+Netlify → Project configuration → Environment variables
 ```
 
-## GitHub setup
+Add the following variables:
 
-1. Create a new empty repository on GitHub, for example `peoplehub-hr-portal`.
-2. From this project directory, run:
-
-```bash
-git init
-git add .
-git commit -m "Build PeopleHub HR portal"
-git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/peoplehub-hr-portal.git
-git push -u origin main
+```text
+AZURE_OPENAI_ENDPOINT
+AZURE_OPENAI_API_KEY
+AZURE_OPENAI_DEPLOYMENT
 ```
 
-The `.gitignore` excludes `node_modules`, `.env`, and build output. Never commit the real Azure API key.
+After adding or changing the variables, select:
 
-## Netlify deployment
+```text
+Deploys → Trigger deploy → Clear cache and deploy site
+```
 
-1. Push the project to GitHub using the steps above.
-2. In Netlify, choose **Add new project** and **Import an existing project**, then select the GitHub repository.
-3. Netlify reads `netlify.toml`: it installs the frontend dependencies, runs the Vite build, publishes `frontend/dist`, and loads functions from `netlify/functions`.
-4. In Netlify, open **Project configuration → Environment variables** and add:
-   - `AZURE_OPENAI_ENDPOINT`
-   - `AZURE_OPENAI_API_KEY`
-   - `AZURE_OPENAI_DEPLOYMENT`
-5. Deploy the site. The `/api/chat` redirect invokes `netlify/functions/chat`, so the API key stays server-side.
+## Security
 
-The function is also available directly at `/.netlify/functions/chat`. Netlify automatically supplies the function runtime and the configured environment variables.
+* Azure credentials are never stored in frontend code.
+* The `.env` file is excluded from GitHub.
+* Azure OpenAI is called only through the backend or Netlify Function.
+* Secrets should never use the `VITE_` prefix because Vite variables can be exposed to the browser.
 
-## Precision controls to verify first
+## Important Note
 
-1. Header title is exactly `PeopleHub — HR Portal`.
-2. Chat launcher is exactly `Ask HR`, and the first assistant message is exactly `Hi, I'm your HR assistant. Ask me about leave, payroll, or policies.`
-3. The portal has exactly four sidebar pages: Dashboard, Leave, Employees, and Policies.
-4. CSS contains the required brand values: `#1f3a5f`, `#2e8b76`, `#f5f7fa`, and `#1a1a1a`.
-5. `/api/chat` accepts `{ message, history }`, and missing Azure variables trigger the demo fallback.
-6. Netlify environment variables are configured under **Project configuration → Environment variables**, never committed to GitHub.
+This project uses sample HR information for demonstration purposes. It is not connected to a real employee database.
+
+AI-generated answers may sometimes be incomplete or inaccurate. Employees should always confirm important information with an authorized HR representative.
+
+## Future Improvements
+
+* Employee login and authentication
+* Role-based access for employees, managers, and HR administrators
+* Integration with a real HR database
+* Manager leave-approval workflow
+* Email notifications
+* Employee profile management
+* HR document uploads
+* AI answers grounded in official company policy documents
+* Chat history and analytics
+
+
+
