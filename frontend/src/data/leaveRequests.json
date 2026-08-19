@@ -1,0 +1,7 @@
+[
+  { "id": "LR-1048", "employee": "Maya Chen", "type": "Annual leave", "dates": "Oct 14 - Oct 18, 2026", "days": 5, "status": "Approved", "submitted": "Sep 02, 2026" },
+  { "id": "LR-1047", "employee": "Jordan Williams", "type": "Personal day", "dates": "Oct 02, 2026", "days": 1, "status": "Pending", "submitted": "Sep 15, 2026" },
+  { "id": "LR-1046", "employee": "Priya Nair", "type": "Annual leave", "dates": "Sep 28 - Sep 30, 2026", "days": 3, "status": "Approved", "submitted": "Aug 29, 2026" },
+  { "id": "LR-1045", "employee": "Evan Brooks", "type": "Sick leave", "dates": "Sep 16, 2026", "days": 1, "status": "Approved", "submitted": "Sep 16, 2026" },
+  { "id": "LR-1044", "employee": "Sofia Garcia", "type": "Annual leave", "dates": "Nov 23 - Nov 27, 2026", "days": 5, "status": "Pending", "submitted": "Sep 10, 2026" }
+]

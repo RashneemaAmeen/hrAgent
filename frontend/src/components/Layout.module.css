@@ -1,0 +1,15 @@
+.shell { min-height: 100vh; display: flex; background: #f5f7fa; }
+.sidebar { width: 246px; background: #1f3a5f; color: #fff; padding: 29px 18px 22px; display: flex; flex-direction: column; flex-shrink: 0; }
+.brand { display: flex; align-items: center; gap: 11px; font: 700 19px 'Space Grotesk', sans-serif; letter-spacing: -.4px; padding: 0 10px; }
+.brandMark { width: 31px; height: 31px; display: grid; place-items: center; border-radius: 9px; background: #2e8b76; color: #fff; font: 700 18px 'Space Grotesk', sans-serif; }
+.workspaceLabel { color: rgba(255,255,255,.48); font-size: 10px; font-weight: 700; letter-spacing: 1.5px; margin: 62px 11px 15px; }
+.nav { display: grid; gap: 5px; }
+.navLink { color: rgba(255,255,255,.7); text-decoration: none; padding: 12px 13px; border-radius: 7px; display: flex; gap: 13px; align-items: center; font-size: 14px; font-weight: 500; transition: background .2s, color .2s; }
+.navLink:hover { color: #fff; background: rgba(255,255,255,.08); }
+.navLink.active { background: #2e8b76; color: #fff; box-shadow: 0 6px 18px rgba(0,0,0,.12); }
+.navIcon { width: 19px; font-size: 18px; text-align: center; line-height: 1; }
+.sidebarFooter { margin-top: auto; border-top: 1px solid rgba(255,255,255,.13); padding: 18px 10px 0; display: flex; gap: 10px; align-items: center; font-size: 12px; }
+.sidebarFooter strong, .sidebarFooter span { display: block; }.sidebarFooter span { color: rgba(255,255,255,.55); margin-top: 4px; }.helpDot { display: grid; place-items: center; width: 28px; height: 28px; color: #2e8b76; background: #fff; border-radius: 50%; font-weight: 700; }
+.main { flex: 1; min-width: 0; }.header { height: 86px; border-bottom: 1px solid #e6eaf0; background: rgba(255,255,255,.76); display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(24px, 5vw, 72px); }.header h1 { margin: 0; color: #1f3a5f; font: 700 18px 'Space Grotesk', sans-serif; letter-spacing: -.35px; }.profile { display: flex; align-items: center; gap: 10px; font-size: 12px; }.profile strong, .profile span { display: block; }.profile span { color: #8490a0; margin-top: 3px; }.avatar, .smallAvatar { background: #e1ede9; color: #2e8b76; border-radius: 50%; display: grid; place-items: center; font-weight: 700; }.avatar { width: 38px; height: 38px; }.chevron { color: #8c98a8; font-size: 18px; margin-left: 9px; }
+.content { max-width: 1230px; margin: 0 auto; padding: 48px clamp(24px, 5vw, 72px) 100px; }
+@media (max-width: 700px) { .sidebar { width: 68px; padding: 20px 10px; }.brand { padding: 0; justify-content: center; }.brand > span:last-child, .workspaceLabel, .navLink:not(.active)::after, .navLink { font-size: 0; }.navLink { justify-content: center; padding: 13px 8px; }.navIcon { font-size: 18px; }.sidebarFooter { display: none; }.header { padding: 0 20px; height: 72px; }.header h1 { font-size: 15px; }.profile > div:not(.avatar), .chevron { display: none; }.content { padding: 32px 18px 80px; } }

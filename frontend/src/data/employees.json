@@ -1,0 +1,8 @@
+[
+  { "name": "Maya Chen", "role": "Product Designer", "department": "Product", "email": "maya.chen@peoplehub.co" },
+  { "name": "Jordan Williams", "role": "Engineering Manager", "department": "Engineering", "email": "jordan.williams@peoplehub.co" },
+  { "name": "Priya Nair", "role": "People Partner", "department": "People", "email": "priya.nair@peoplehub.co" },
+  { "name": "Evan Brooks", "role": "Financial Analyst", "department": "Finance", "email": "evan.brooks@peoplehub.co" },
+  { "name": "Sofia Garcia", "role": "Customer Success Lead", "department": "Customer Success", "email": "sofia.garcia@peoplehub.co" },
+  { "name": "Liam O'Connor", "role": "Frontend Engineer", "department": "Engineering", "email": "liam.oconnor@peoplehub.co" }
+]
